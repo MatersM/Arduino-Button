@@ -1,0 +1,9 @@
+output
+src/a.out 
+src/*.o 
+src/*.d
+src/comp.sh
+.vscode
+.DS_Store
+
+
