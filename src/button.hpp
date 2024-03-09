@@ -1,4 +1,3 @@
-
 #ifndef BUTTON_H
 #define BUTTON_H
 #include <vector>
@@ -20,7 +19,5 @@ private:
   uint32_t _pin ;
   void    (*_func)() ;
   uint32_t _debounce ;
-  static std::vector<std::function<void(void)>>_lambdas ;
 } ;
 #endif
-

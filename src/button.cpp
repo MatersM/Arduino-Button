@@ -3,12 +3,8 @@
 
 std::vector<std::function<void(void)>>interruptStore ;
 
-Button::Button(uint8_t pin, void (*callbackFunction)()) {
-	_func = callbackFunction ;
-	auto pressedFunction =  [this]() {this->pressed() ;} ;
-	_lambdas.push_back(pressedFunction) ;
-	attachInterrupt(pin,_lambdas.back(),RISING) ;
-	_pin = pin ;
+Button::Button(uint8_t pin, void (*callbackFunction)()) : _pin(pin), _func(callbackFunction) {
+    attachInterrupt(pin, [this](){ this->pressed(); }, RISING);
 }
 
 Button::~Button() {
@@ -22,6 +18,4 @@ inline void Button::pressed() {
 //		_debounce = millis() ;
 //	}
 }
-
-std::vector<std::function<void(void)>>Button::_lambdas ; // We need to define a static here, declaration is done in button.hpp
 
